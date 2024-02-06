@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<Transaction>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                Details
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount) in CHF
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateShortString)
+                </td>
+                <td>
+                    <p class="fw-bold m-0">@Html.DisplayFor(modelItem => item.Category.Name)</p>
+                    <p class="m-0">@Html.DisplayFor(modelItem => item.Name)</p>
+                    <p class="fw-light m-0" style="white-space: pre-line">@Html.DisplayFor(modelItem => item.Description)</p>
+                    <p class="m-0">TO @Html.DisplayFor(modelItem => item.Recipient.Name)</p>
+                    <p class="m-0 fst-italic" style="white-space: pre-line">@Html.DisplayFor(modelItem => item.Note)</p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AmountString)
+                </td>
+                <td>
+                    <a data-ajax="true" data-ajax-complete="showAddTransactionModal" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#addTransactionModalForm" href="@Url.Action("AddTransaction", "Home", new { id = item.Id })">
+                        Edit
+                    </a>
+                    |
+                    <a data-ajax="true" data-ajax-confirm="Do you really want to delete the transaction?" data-ajax-method="POST" data-ajax-complete="showDeleteConfirmation" href="@Url.Action("DeleteTransaction", "Home", new { id = item.Id })">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
