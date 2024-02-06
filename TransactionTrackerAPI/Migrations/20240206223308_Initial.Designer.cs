@@ -12,7 +12,7 @@ using TransactionTrackerService.Models;
 namespace TransactionTrackerService.Migrations
 {
     [DbContext(typeof(TransactionTrackerDBContext))]
-    [Migration("20240206072427_Initial")]
+    [Migration("20240206223308_Initial")]
     partial class Initial
     {
         /// <inheritdoc />

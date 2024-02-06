@@ -3,9 +3,9 @@
 }
 @model IEnumerable<Transaction>
 
-<div class="alert visually-hidden" role="alert">
-    <div class="text"></div>
-    <button type="button" class="btn-close" onclick="hideDeleteConfirmation()" aria-label="Close"></button>
+<div class="alert alert-success visually-hidden" role="alert">
+    <div class="text d-inline"></div>
+    <button type="button" class="btn-close float-end" onclick="hideDeleteConfirmation()" aria-label="Close"></button>
 </div>
 
 <h1>
@@ -46,11 +46,6 @@
 </div>
 
 <script>
-    var alertList = document.querySelectorAll('.alert')
-    alertList.forEach(function (alert) {
-        new bootstrap.Alert(alert)
-    })
-
     function showAddTransactionModal() {
         $('#addTransactionModal').modal('show');
     }
@@ -67,15 +62,8 @@
     }
 
     function hideAddTransactionModal() {
-        // $('#addTransactionModal').modal('hide');
+        $('#addTransactionModal').modal('hide');
 
-        // $.ajax({
-        //     url: '/Home/Index',
-        //     dataType: 'html',
-        //     type: "GET",
-        //     mode: "replace",
-        //     update: "#transactionTable"
-        // });
         showAllTransactions();
     }
 

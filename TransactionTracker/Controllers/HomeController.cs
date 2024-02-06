@@ -23,7 +23,7 @@ namespace TransactionTracker.Controllers
             // 1: Default user
             var transactions = await _service.GetTransactionsAsync(1);
             _logger.LogInformation("GetTransactionsAsync() successfully called.");
-            //ajax
+            // Ajax
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {
                 return PartialView("_TransactionTable", transactions);

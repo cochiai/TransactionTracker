@@ -28,10 +28,13 @@
     <label class="form-label">Recipient</label>
     <select class="form-select" asp-for="Transaction.RecipientId" asp-items="@(new SelectList(Model.Recipients, nameof(Person.Id), nameof(Person.Name)))"></select>
 </div>
-<div class="input-group mb-3">
-    <input type="number" step=".01" class="form-control w-75" asp-for="Transaction.Amount">
-    <select class="form-select" asp-for="Transaction.CurrencyId" asp-items="@(new SelectList(Model.Currencies, nameof(Currency.Id), nameof(Currency.Abbreviation)))"></select>
-    <span class="text-danger" asp-validation-for="Transaction.Amount"></span>
+<div class="mb-3">
+    <label class="form-label">Amount</label>
+    <div class="input-group">
+        <input type="number" step=".01" class="form-control w-75" asp-for="Transaction.Amount">
+        <select class="form-select" asp-for="Transaction.CurrencyId" asp-items="@(new SelectList(Model.Currencies, nameof(Currency.Id), nameof(Currency.Abbreviation)))"></select>
+        <span class="text-danger" asp-validation-for="Transaction.Amount"></span>
+    </div>    
 </div>
 <div class="mb-3">
     <label class="form-label">Note</label>

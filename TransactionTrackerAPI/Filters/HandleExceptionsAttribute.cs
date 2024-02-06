@@ -18,7 +18,6 @@ namespace TransactionTrackerService.Filters
         }
         public override void OnException(ExceptionContext context)
         {
-
             _logger.LogError("Unhandled exception occurred while executing request: {ex}", context.Exception);
             context.Result = new ObjectResult(context.Exception.Message) { StatusCode = (int)HttpStatusCode.InternalServerError };
             context.ExceptionHandled = true;
